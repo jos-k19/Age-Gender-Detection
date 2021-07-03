@@ -12,13 +12,39 @@ In this project, We have used Computer vision using Python-OpenCV and DNN. We im
 <br />
 ## Code Implementation
 ### Following commands, files and functions were used in our project
-* argparse: To take input from the user
+* argparse: To take input from the user 
+ ```pip install argparse ```
 * --input: Provides the path to the input image for age detection
 * --confidence: The minimum probability threshold to filter weak detections
+*  imultis: Series of convenience functions to make basic image processing functions 
+ ```pip install imutils ```
+
 ### Command prompt commands to run the  python file
 * For images: 
-    * python {file_name.py} --input {image_address/image}
+    * python {file_name.py} --input {image_address/image.extension}
 * For video stream:
     * Python {file_name.py}
-    * Sufficient lightning
-
+## Result:
+ ```
+    python AgeGender.py --input All_Images/image_02.jpg
+    Gender : Male
+    Age : (25-32)
+ ```
+ ![GitHub Logo](All_Results/result_01.png)
+```
+    python AgeGender.py --input All_Images/image_08.jpg
+    Gender : Female
+    Age : (25-32)
+ ```
+ ![GitHub Logo](All_Results/result_02.png)
+ 
+ ```
+    python AgeGender.py --input All_Images/image_10.jpg
+    Gender : Female
+    Age : (4-6)
+ ```
+ ![GitHub Logo](All_Results/result_05.png)
+ ### Final result
+ 
+ ![GitHub Logo](All_Results/final_result.jpg)
+ 
