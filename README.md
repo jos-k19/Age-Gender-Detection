@@ -9,10 +9,12 @@
 * argparse: To take input from the user
 * --input: Provides the path to the input image for age detection
 * --confidence: The minimum probability threshold to filter weak detections
+*  imultis: Series of convenience functions to make basic image processing functions (pip install imutils)
+
 ### Command prompt commands to run the  python file
 * For images: 
-    * python {file_name.py} --input {image_address/image}
+    * python {file_name.py} --input {image_address/image.extension}
 * For video stream:
     * Python {file_name.py}
-    * Sufficient lightning
+    
 
