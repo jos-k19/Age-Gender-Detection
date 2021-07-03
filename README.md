@@ -31,4 +31,20 @@ In this project, We have used Computer vision using Python-OpenCV and DNN. We im
     Age : (25-32)
  ```
  ![GitHub Logo](All_Results/result_01.png)
-Format: ![Alt Text](url)
+```
+    python AgeGender.py --input All_Images/image_08.jpg
+    Gender : Female
+    Age : (25-32)
+ ```
+ ![GitHub Logo](All_Results/result_02.png)
+ 
+ ```
+    python AgeGender.py --input All_Images/image_10.jpg
+    Gender : Female
+    Age : (4-6)
+ ```
+ ![GitHub Logo](All_Results/result_05.png)
+ ### Final result
+ 
+ ![GitHub Logo](All_Results/final_result.jpg)
+ 
