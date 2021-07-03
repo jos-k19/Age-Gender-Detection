@@ -10,11 +10,12 @@ import os
 
 
 
-def detect_and_predict_age(frame, faceNet, ageNet, minConf=0.5):
+def detect_and_predict_age(frame, faceNet, ageNet, genderNet, minConf=0.5):
 
     # define the list of age buckets our age detector will predict
     AGE_BUCKETS = ["(0-2)", "(4-6)", "(8-12)", "(15-20)", "(25-32)",
                    "(38-43)", "(48-53)", "(60-100)"]
+    GENDER_BUCKET = ['Male', 'Female']
 
     # initialize our results list
     results = []
@@ -48,14 +49,21 @@ def detect_and_predict_age(frame, faceNet, ageNet, minConf=0.5):
             # make predictions on the age and find the age bucket with
             # the largest corresponding probability
             ageNet.setInput(faceBlob)
-            preds = ageNet.forward()
-            i = preds[0].argmax()
+            genderNet.setInput(faceBlob)
+            agePreds = ageNet.forward()
+            genderPreds = genderNet.forward()
+
+            i = agePreds[0].argmax()
+            j = genderPreds[0].argmax()
             age = AGE_BUCKETS[i]
-            ageConfidence = preds[0][i]
+            gender = GENDER_BUCKET[j]
+            ageConfidence = agePreds[0][i]
+            genderConfidence = genderPreds[0][j]
             # construct a dictionary consisting of both the face bounding box location along with the age prediction, then update our results list
             d = {
                 "loc": (startX, startY, endX, endY),
-                "age": (age, ageConfidence)
+                "age": (age, ageConfidence),
+                "gender": (gender, genderConfidence)
             }
             results.append(d)
     # return our results to the calling function
@@ -158,7 +166,7 @@ if v!="video":
             genderNet.setInput(blob)
             genderPreds = genderNet.forward()
             gender = genderList[genderPreds[0].argmax()]
-            # print("Gender Output : {}".format(genderPreds))
+            print("Gender Output : {}".format(genderPreds))
             print("Gender : {}, conf = {:.3f}".format(gender, genderPreds[0].max()))
 
             ageNet.setInput(blob)
@@ -176,25 +184,36 @@ if v!="video":
 
 
 
-# cmake -DCMAKE_BUILD_TYPE=RELEASE -DCMAKE_INSTALL_PREFIX=~/opencv_gpu -DINSTALL_PYTHON_EXAMPLES=OFF -DINSTALL_C_EXAMPLES=OFF -DOPENCV_ENABLE_NONFREE=ON -DOPENCV_EXTRA_MODULES_PATH=~/cv2_gpu/opencv_contrib/modules -DPYTHON_EXECUTABLE=~/env/bin/python3 -DBUILD_EXAMPLES=ON -DWITH_CUDA=ON -DWITH_CUDNN=ON -DOPENCV_DNN_CUDA=ON  -DENABLE_FAST_MATH=ON -DCUDA_FAST_MATH=ON  -DWITH_CUBLAS=ON -DCUDA_TOOLKIT_ROOT_DIR=/usr/local/cuda-10.2 -DOpenCL_LIBRARY=/usr/local/cuda-10.2/lib64/libOpenCL.so -DOpenCL_INCLUDE_DIR=/usr/local/cuda-10.2/include/ ..\
 
 else:
     vs = VideoStream(src=0).start()
     time.sleep(2.0)
+    padding = 20
     while True:
         # grab the frame from the threaded video stream and resize it to have a maximum width of 400 pixels
         frame = vs.read()
         frame = imutils.resize(frame, width=400)
         # detect faces in the frame, and for each face in the frame, predict the age
-        results = detect_and_predict_age(frame, faceNet, ageNet)
+        results = detect_and_predict_age(frame, faceNet, ageNet, genderNet)
         # loop over the results
         for r in results:
-            # draw the bounding box of the face along with the associated predicted age
-            text = "{}: {:.2f}%".format(r["age"][0], r["age"][1] * 100)
+
             (startX, startY, endX, endY) = r["loc"]
             y = startY - 10 if startY - 10 > 10 else startY + 10
-            cv.rectangle(frame, (startX, startY), (endX, endY), (0, 0, 255), 2)
-            cv.putText(frame, text, (startX, y), cv.FONT_HERSHEY_SIMPLEX, 0.45, (0, 0, 255), 2)
+
+
+            print("Gender Output : {}".format(r["gender"][1] * 100))
+            print("Gender : {}, conf = {:.3f}".format(r["gender"][0], r["gender"][1] * 100))
+
+
+            print("Age Output : {}".format(r["age"][1] * 100))
+            print("Age : {}, conf = {:.3f}".format(r["age"][0], r["age"][1] * 100))
+
+            label = "{},{}".format(r["gender"][0],r["age"][0],)
+
+            cv.rectangle(frame, (startX, startY), (endX, endY), (0, 255,0), 2)
+            cv.putText(frame, label, (startX, y), cv.FONT_HERSHEY_SIMPLEX, 0.45, (0, 255, 255), 2,cv.LINE_AA)
+
         # show the output frame
         cv.imshow("Frame", frame)
         key = cv.waitKey(1) & 0xFF
