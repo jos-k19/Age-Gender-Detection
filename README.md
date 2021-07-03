@@ -6,15 +6,23 @@
 ### In this project, We have used Computer vision using Python-OpenCV and DNN. We implement CNN, Deep learning approaches, and OpenCV using Python to achieve robust age group and gender classification of faces. We used a dataset for face photos that include various real-world imaging conditions like noise, lighting, pose, and appearance. We classified people into male and female and different age groups. We have used various online materials for learning about this and implementing it in the most reliable way possible. 
 ## Code Implementation
 ### Following commands, files and functions were used in our project
-* argparse: To take input from the user
+* argparse: To take input from the user 
+ ```pip install argparse ```
 * --input: Provides the path to the input image for age detection
 * --confidence: The minimum probability threshold to filter weak detections
-*  imultis: Series of convenience functions to make basic image processing functions (pip install imutils)
+*  imultis: Series of convenience functions to make basic image processing functions 
+ ```pip install imutils ```
 
 ### Command prompt commands to run the  python file
 * For images: 
     * python {file_name.py} --input {image_address/image.extension}
 * For video stream:
     * Python {file_name.py}
-    
-
+## Result:
+ ```
+    python AgeGender.py --input All_Images/image_02.jpg
+    Gender : Male
+    Age : (25-32)
+ ```
+ ![GitHub Logo](All_Results/result_01.png)
+Format: ![Alt Text](url)
