@@ -102,7 +102,7 @@ while cv.waitKey(1) < 0:
         genderNet.setInput(blob)
         genderPreds = genderNet.forward()
         gender = genderList[genderPreds[0].argmax()]
-        # print("Gender Output : {}".format(genderPreds))
+        print("Gender Output : {}".format(genderPreds))
         print("Gender : {}, conf = {:.3f}".format(gender, genderPreds[0].max()))
 
         ageNet.setInput(blob)

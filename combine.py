@@ -166,7 +166,7 @@ if v!="video":
             genderNet.setInput(blob)
             genderPreds = genderNet.forward()
             gender = genderList[genderPreds[0].argmax()]
-            # print("Gender Output : {}".format(genderPreds))
+            print("Gender Output : {}".format(genderPreds))
             print("Gender : {}, conf = {:.3f}".format(gender, genderPreds[0].max()))
 
             ageNet.setInput(blob)
@@ -184,9 +184,11 @@ if v!="video":
 
 
 
+
 else:
     vs = VideoStream(src=0).start()
     time.sleep(2.0)
+    padding = 20
     while True:
         # grab the frame from the threaded video stream and resize it to have a maximum width of 400 pixels
         frame = vs.read()
@@ -195,12 +197,23 @@ else:
         results = detect_and_predict_age(frame, faceNet, ageNet, genderNet)
         # loop over the results
         for r in results:
-            # draw the bounding box of the face along with the associated predicted age
-            text = "{}: {:.2f}% , {}:{:.2f}%".format(r["age"][0], r["age"][1] * 100,r["gender"][0], r["gender"][1] * 100, )
+
             (startX, startY, endX, endY) = r["loc"]
             y = startY - 10 if startY - 10 > 10 else startY + 10
-            cv.rectangle(frame, (startX, startY), (endX, endY), (0, 0, 255), 2)
-            cv.putText(frame, text, (startX, y), cv.FONT_HERSHEY_SIMPLEX, 0.45, (0, 255, 255), 2)
+
+
+            print("Gender Output : {}".format(r["gender"][1] * 100))
+            print("Gender : {}, conf = {:.3f}".format(r["gender"][0], r["gender"][1] * 100))
+
+
+            print("Age Output : {}".format(r["age"][1] * 100))
+            print("Age : {}, conf = {:.3f}".format(r["age"][0], r["age"][1] * 100))
+
+            label = "{},{}".format(r["gender"][0],r["age"][0],)
+
+            cv.rectangle(frame, (startX, startY), (endX, endY), (0, 255,0), 2)
+            cv.putText(frame, label, (startX, y), cv.FONT_HERSHEY_SIMPLEX, 0.45, (0, 255, 255), 2,cv.LINE_AA)
+
         # show the output frame
         cv.imshow("Frame", frame)
         key = cv.waitKey(1) & 0xFF
