@@ -200,7 +200,7 @@ else:
             (startX, startY, endX, endY) = r["loc"]
             y = startY - 10 if startY - 10 > 10 else startY + 10
             cv.rectangle(frame, (startX, startY), (endX, endY), (0, 0, 255), 2)
-            cv.putText(frame, text, (startX, y), cv.FONT_HERSHEY_SIMPLEX, 0.45, (0, 0, 255), 2)
+            cv.putText(frame, text, (startX, y), cv.FONT_HERSHEY_SIMPLEX, 0.45, (0, 255, 255), 2)
         # show the output frame
         cv.imshow("Frame", frame)
         key = cv.waitKey(1) & 0xFF
