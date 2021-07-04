@@ -18,6 +18,33 @@ In this project, We have used Computer vision using Python-OpenCV and DNN. We im
 * --confidence: The minimum probability threshold to filter weak detections
 *  imultis: Series of convenience functions to make basic image processing functions 
  ```pip install imutils ```
+* blobFromImage: This function performs three significant tasks
+    * Mean subtraction
+    * Scaling
+    * optionally channel swapping
+* scale factor: After we perform mean subtraction, we can optionally scale our images by some factor using “scale factor.” 
+* Size: It is used to supply the spatial size that the Convolutional Neural Network expects.
+* Mean: These are our mean subtraction values. They can be a 3-tuple of the RGB means, or they can be a single value, in which case the supplied value is subtracted from 8 every channel of the image. 
+* swapRB: OpenCV assumes images are in BGR channel order; however, the mean value assumes we are using RGB order. To remove this discrepancy, we can use swap
+* detection: list of detected faces
+* faceBlob: Blob generated after capturing region of interest(ROI)
+* frame: A single frame from your webcam video stream
+* faceNet: The initialized deep learning face detector
+* ageNet: Our initialized deep learning age classifier
+* genderNet: Our initialized deep learning gender classifier
+* minConf: The confidence threshold to filter weak face detections
+* Results: Final output that contains dictionary of age and gender predicted 
+* imultis: Series of convenience functions to make basic image processing functions
+* cv2.waitKey(): Keyboard binding function. 
+* cv2.destroyAllWindows():  Destroy all windows that we created 
+* readNet(): This method is used to load the networks
+* .pb file: This is a protobuf file (protocol buffer); it holds the graph definition and the trained weights of the model.
+* .pb file: This is a protobuf file (protocol buffer); it holds the graph definition and the trained weights of the model.
+* .prototxt files: It describes the network configuration
+* .caffemodel file: This defines the internal states of the parameters of the layers
+* cv2.putText(): It is used to put text on the image detected
+* os: To access desktop files 
+
 
 ### Command prompt commands to run the  python file
 * For images: 
