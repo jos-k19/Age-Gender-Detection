@@ -119,23 +119,27 @@ Overall, it was an excellent experience learning about OpenCV, python implementa
     Gender : Male
     Age : (25-32)
  ```
- ![GitHub Logo](All_Results/result_01.png)
+
+ <img src="All_Results/result_01.png" alt="GitHub Logo" width="50%" text-align: center/>
+ 
 ```
     python AgeGender.py --input All_Images/image_08.jpg
     Gender : Female
     Age : (25-32)
  ```
- ![GitHub Logo](All_Results/result_02.png)
+
+ <img src="All_Results/result_02.png" alt="GitHub Logo" width="50%" text-align: center/>
  
  ```
     python AgeGender.py --input All_Images/image_10.jpg
     Gender : Female
     Age : (4-6)
  ```
- ![GitHub Logo](All_Results/result_05.png)
+ <img src="All_Results/result_05.png" alt="GitHub Logo" width="50%" text-align: center/>
+ 
  ### Final result
  
- ![GitHub Logo](All_Results/final_result.jpg)
+ <img src="All_Results/final_result.jpg" alt="GitHub Logo" width="50%" text-align: center/>
  
  ## Refrences
  1. https://talhassner.github.io/home/projects/cnn_agegender/CVPR2015_CNN_AgeGenderEstimation.pdf
