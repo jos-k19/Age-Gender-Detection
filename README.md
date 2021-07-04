@@ -119,29 +119,35 @@ Overall, it was an excellent experience learning about OpenCV, python implementa
     Gender : Male
     Age : (25-32)
  ```
-
- <img src="All_Results/result_01.png" alt="GitHub Logo" width="50%" text-align: center/>
+<p align="center">
+<img src="All_Results/result_01.png" alt="GitHub Logo" width="50%" text-align: center/>
+</p>
  
 ```
     python AgeGender.py --input All_Images/image_08.jpg
     Gender : Female
     Age : (25-32)
  ```
+<p align="center">
+<img src="All_Results/result_02.png" alt="GitHub Logo" width="50%" text-align: center/>
+</p>
 
- <img src="All_Results/result_02.png" alt="GitHub Logo" width="50%" text-align: center/>
- 
  ```
     python AgeGender.py --input All_Images/image_10.jpg
     Gender : Female
     Age : (4-6)
  ```
- <img src="All_Results/result_05.png" alt="GitHub Logo" width="50%" text-align: center/>
+<p align="center">
+<img src="All_Results/result_05.png" alt="GitHub Logo" width="50%" text-align: center/>
+</p>
  
- ### Final result
+### Final result
+
+<p align="center">
+<img src="All_Results/final_result.jpg" alt="GitHub Logo" width="50%" text-align: center/>
+ </p>
  
- <img src="All_Results/final_result.jpg" alt="GitHub Logo" width="50%" text-align: center/>
- 
- ## Refrences
+## Refrences
  1. https://talhassner.github.io/home/projects/cnn_agegender/CVPR2015_CNN_AgeGenderEstimation.pdf
  2. https://towardsdatascience.com/a-comprehensive-guide-to-convolutional-neural-networks-the-eli5-way-3bd2b1164a53
  3. https://towardsdatascience.com/what-is-deep-learning-and-how-does-it-work-2ce44bb692ac
