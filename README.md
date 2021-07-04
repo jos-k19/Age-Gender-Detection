@@ -20,7 +20,7 @@ We have also used OpenCV-Python in our project. OpenCV (Open Source Computer Vis
 * .prototxt - contain  model architecture(Layers)
 * .caffemodel - contain weights for the actual layer
 
-## Our IMplementation
+## Our Implementation
 ### Face Recognition:
 Face detection can be divided into three steps
 1. Face detection — Detecting one or more faces in an image.
@@ -41,7 +41,7 @@ The neural network computes the 128-d embeddings for each face and then tweaks t
 In training, the neural network learns to output similar vectors for faces that look similar. After training the network, the network learns to output the vector that is closer to each other.
 
 ### Gender and Age Detection:
-Our Age and Gender detection are based on a model trained by Gil Levi and Tal Hassner. They used CNN similar to CaffeNet. The network uses three convolutional layers, two fully connected layers, and a final output layer. The layers are 
+Our Age and Gender detection are based on a model trained by [Gil Levi and Tal Hassner](https://talhassner.github.io/home/projects/cnn_agegender/CVPR2015_CNN_AgeGenderEstimation.pdf). They used CNN similar to CaffeNet. The network uses three convolutional layers, two fully connected layers, and a final output layer. The layers are 
 1. Conv1: The first conv layer has 96 nodes of kernel size 7.
 2. Conv2: The second conv layer has 256 nodes with kernel size 5.
 3. Conv3: The third conv layer has 384 nodes with kernel size 3.
@@ -136,4 +136,17 @@ Overall, it was an excellent experience learning about OpenCV, python implementa
  ### Final result
  
  ![GitHub Logo](All_Results/final_result.jpg)
+ 
+ ## Refrences
+ 1. https://talhassner.github.io/home/projects/cnn_agegender/CVPR2015_CNN_AgeGenderEstimation.pdf
+ 2. https://towardsdatascience.com/a-comprehensive-guide-to-convolutional-neural-networks-the-eli5-way-3bd2b1164a53
+ 3. https://towardsdatascience.com/what-is-deep-learning-and-how-does-it-work-2ce44bb692ac
+ 4. https://www.pyimagesearch.com/2020/04/13/opencv-age-detection-with-deep-learning/
+ 5. https://www.pyimagesearch.com/2018/09/24/opencv-face-recognition/
+ 6. https://learnopencv.com/age-gender-classification-using-opencv-deep-learning-c-python/
+ 7. https://www.youtube.com/watch?v=V0qeBb8F8XY
+ 8. https://www.youtube.com/watch?v=Mubj_fqiAv8&list=PLeo1K3hjS3uu7CxAacxVndI4bE_o3BDtO
+
+
+
  
