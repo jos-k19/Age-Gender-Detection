@@ -13,8 +13,19 @@ In this project, We have used Computer vision using Python-OpenCV and DNN. We im
 ## Concept and Framework Used 
 ### Deep Learning:
 Deep learning is a subset of machine learning. It uses the multilayered structure of the algorithm called Neural network. The design of NN is based upon the human brain. With the help of NN, we can perform various machine learning tasks like classification, regression, clustering. Deep learning is also different from SVM and Naive-Bayes classifier methods because it doesn’t require feature extraction to classify data into several categories.
+
+
+<p align="center">
+<img src="Other_images/Deep_learning.png" alt="GitHub Logo" width="50%" text-align: center/>
+</p>
+
 ### Convolutional Neural Network:
 We used CNN in our project. We input our image in this algorithm, and then it assigns important features and weight to various parts in a snap. This feature differentiates objects in an image. ConvNet successfully captures spectral and temporal characteristics. It performs better than other algorithms due to the reduction of parameters and reusability of weights. CNN uses kernels that extract the features from an image. It traverses through the whole image generating a convoluted feature output. There can be multiple layers in this arrangement, each used to extract different features. After that, the pooling layer is used to reduce the spatial size of convolved features. It reduces dimensionality by extracting only necessary features, which results in decreases in the computational power required. There are two possible ways to apply the pooling layer. Max-pooling returns the max value from the portion kernel covers, while average pooling returns the average value.
+
+<p align="center">
+<img src="Other_images/CNN_2.gif" alt="GitHub Logo" width="50%" text-align: center/>
+</p>
+
 ### OpenCV-Python: 
 We have also used OpenCV-Python in our project. OpenCV (Open Source Computer Vision Library) is an open-source computer vision and machine learning software library. Using OpenCV, we can identify real-time faces, objects, and even handwriting. OpenCV-Python is a library/API in python language which is used to implement various computer vision tasks. It is written in C/C++, which makes it very fast, and the interface of Python makes it easy to code and deploy. OpenCV supports much deep learning frameworks like Caffe, Tensorflow, And PyTorch. When working with Caffe models, we should have two sets of files. They are 
 * .prototxt - contain  model architecture(Layers)
@@ -38,6 +49,10 @@ The neural network computes the 128-d embeddings for each face and then tweaks t
 1. The 128-d embeddings of the anchor and positive image lie closer together
 2. While at the same time, pushing the embeddings for the negative image father away
 
+<p align="center">
+<img src="Other_images/Face_rec.jpg" alt="GitHub Logo" width="50%" text-align: center/>
+</p>
+
 In training, the neural network learns to output similar vectors for faces that look similar. After training the network, the network learns to output the vector that is closer to each other.
 
 ### Gender and Age Detection:
@@ -59,6 +74,11 @@ The following fully connected layers are then defined by:
 4. The first fully connected layer receives the output of the third convolutional layer and contains 512 neurons, followed by a ReLU and a dropout layer.
 5. A second fully connected layer receives the 512- dimensional output of the first fully connected layer and again contains 512 neurons, followed by a ReLU and a dropout layer.
 6. A third, fully connected layer maps to the final classes for age or gender.
+
+
+<p align="center">
+<img src="Other_images/Age_Gender_detection.png" alt="GitHub Logo" width="50%" text-align: center/>
+</p>
 
 Finally, the output of the last fully connected layer is fed to a soft-max layer that assigns a probability for each class. The prediction itself is made by taking the class with the maximal probability for the given test image.
 
@@ -109,13 +129,13 @@ They framed gender prediction as a classification problem with two classes, male
     * python {file_name.py} --input {image_address/image.extension}
 * For video stream:
     * Python {file_name.py}
-## Result:
+## Results:
 Each of our team members implemented the project differently. One of them only implemented Age erection, and the other only implemented gender detection. We then combined all of our code. In the code, we used all the methods mentioned above and algorithms. All of the files are uploaded on GitHub. 
 The results were inspiring in each of our codes. Also, after combining the code, the output was not affected much. We thought there was some issue in code for the video stream, but after using sufficient light and position, we got results there too. Yet some of the results were not that good, like for babies pictures; gender detection was not easy. We applied extra padding, as mentioned in some tutorials, and we observed some improved results. 
 Overall, it was an excellent experience learning about OpenCV, python implementation, understanding and implementing the code, reading papers, and reading DNN and computer vision articles. And now, we all are excited about implementing and learning more about this field.
 
  ```
-    python AgeGender.py --input All_Images/image_02.jpg
+    python combine.py --input All_Images/image_02.jpg
     Gender : Male
     Age : (25-32)
  ```
@@ -124,7 +144,7 @@ Overall, it was an excellent experience learning about OpenCV, python implementa
 </p>
  
 ```
-    python AgeGender.py --input All_Images/image_08.jpg
+    python combine.py --input All_Images/image_08.jpg
     Gender : Female
     Age : (25-32)
  ```
@@ -133,7 +153,7 @@ Overall, it was an excellent experience learning about OpenCV, python implementa
 </p>
 
  ```
-    python AgeGender.py --input All_Images/image_10.jpg
+    python combine.py --input All_Images/image_10.jpg
     Gender : Female
     Age : (4-6)
  ```
@@ -145,7 +165,7 @@ Overall, it was an excellent experience learning about OpenCV, python implementa
 
 <p align="center">
 <img src="All_Results/final_result.jpg" alt="GitHub Logo" width="50%" text-align: center/>
- </p>
+</p>
  
 ## Refrences
  1. https://talhassner.github.io/home/projects/cnn_agegender/CVPR2015_CNN_AgeGenderEstimation.pdf
