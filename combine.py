@@ -1,14 +1,13 @@
 import cv2 as cv
-import time
 import argparse
 import os
 
 
-def getFaceBox(net, frame, conf_threshold=0.7):
-    frameOpencvDnn = frame.copy()
-    frameHeight = frameOpencvDnn.shape[0]
-    frameWidth = frameOpencvDnn.shape[1]
-    blob = cv.dnn.blobFromImage(frameOpencvDnn, 1.0, (300, 300), [104, 117, 123], True, False)
+def Face_det(net, frame, conf_threshold=0.7):
+    frame_copy = frame.copy()
+    h = frame_copy.shape[0]
+    w = frame_copy.shape[1]
+    blob = cv.dnn.blobFromImage(frame_copy, 1.0, (300, 300), [104, 117, 123], True, False)
 
     net.setInput(blob)
     detections = net.forward()
@@ -16,13 +15,13 @@ def getFaceBox(net, frame, conf_threshold=0.7):
     for i in range(detections.shape[2]):
         confidence = detections[0, 0, i, 2]
         if confidence > conf_threshold:
-            x1 = int(detections[0, 0, i, 3] * frameWidth)
-            y1 = int(detections[0, 0, i, 4] * frameHeight)
-            x2 = int(detections[0, 0, i, 5] * frameWidth)
-            y2 = int(detections[0, 0, i, 6] * frameHeight)
+            x1 = int(detections[0, 0, i, 3] * w)
+            y1 = int(detections[0, 0, i, 4] * h)
+            x2 = int(detections[0, 0, i, 5] * w)
+            y2 = int(detections[0, 0, i, 6] * h)
             bboxes.append([x1, y1, x2, y2])
-            cv.rectangle(frameOpencvDnn, (x1, y1), (x2, y2), (0, 255, 0), int(round(frameHeight / 150)), 1)
-    return frameOpencvDnn, bboxes
+            cv.rectangle(frame_copy, (x1, y1), (x2, y2), (0, 255, 0), int(round(frameHeight / 150)), 1)
+    return frame_copy, bboxes
 
 
 parser = argparse.ArgumentParser(description='Use this script to run age and gender recognition using OpenCV.')
@@ -78,13 +77,12 @@ print(f"v:{v}")
 padding = 20
 while cv.waitKey(1) < 0:
     # Read frame
-    t = time.time()
     hasFrame, frame = cap.read()
     if not hasFrame:
         cv.waitKey()
         break
 
-    frameFace, bboxes = getFaceBox(faceNet, frame)
+    frameFace, bboxes = Face_det(faceNet, frame)
     print(f'bboxes:{bboxes}')
     if not bboxes:
         print("No face Detected, Checking next frame")
@@ -112,5 +110,3 @@ while cv.waitKey(1) < 0:
         cv.putText(frameFace, label, (bbox[0], bbox[1] - 10), cv.FONT_HERSHEY_SIMPLEX, 0.8, (0, 255, 255), 2,
                    cv.LINE_AA)
         cv.imshow("Age Gender Demo", frameFace)
-        # cv.imwrite("age-gender-out-{}".format(args.input),frameFace)
-    print("time : {:.3f}".format(time.time() - t))
