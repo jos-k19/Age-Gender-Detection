@@ -10,7 +10,7 @@ import os
 
 
 
-def detect_and_predict_age(frame, faceNet, ageNet, genderNet, minConf=0.5):
+def gender_age(frame, faceNet, ageNet, genderNet, minConf=0.5):
 
     # define the list of age buckets our age detector will predict
     AGE_BUCKETS = ["(0-2)", "(4-6)", "(8-12)", "(15-20)", "(25-32)",
@@ -194,7 +194,7 @@ else:
         frame = vs.read()
         frame = imutils.resize(frame, width=400)
         # detect faces in the frame, and for each face in the frame, predict the age
-        results = detect_and_predict_age(frame, faceNet, ageNet, genderNet)
+        results = gender_age(frame, faceNet, ageNet, genderNet)
         # loop over the results
         for r in results:
 
