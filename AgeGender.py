@@ -89,9 +89,9 @@ while cv.waitKey(1) < 0:
 
     frameFace, bboxes = getFaceBox(faceNet, frame)
     print(f'bboxes:{bboxes}')
-    # if not bboxes:
-    #     print("No face Detected, Checking next frame")
-    #     continue
+    if not bboxes:
+        print("No face Detected, Checking next frame")
+        continue
 
     for bbox in bboxes:
         # print(bbox)
