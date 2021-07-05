@@ -161,11 +161,6 @@ Overall, it was an excellent experience learning about OpenCV, python implementa
 <img src="All_Results/result_05.png" alt="GitHub Logo" width="50%" text-align: center/>
 </p>
  
-### Final result
-
-<p align="center">
-<img src="All_Results/final_result.jpg" alt="GitHub Logo" width="50%" text-align: center/>
-</p>
  
 ## Refrences
  1. https://talhassner.github.io/home/projects/cnn_agegender/CVPR2015_CNN_AgeGenderEstimation.pdf
